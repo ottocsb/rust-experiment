@@ -1,6 +1,5 @@
 use std::env;
 
-
 fn main() {
     if let Err(err) = parse_and_calculate() {
         eprintln!("错误: {}", err);

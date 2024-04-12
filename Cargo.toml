@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "text_retrieval",
+    "calculator",
+    "upload_logs"
+]
