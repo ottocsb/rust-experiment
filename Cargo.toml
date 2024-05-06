@@ -4,3 +4,8 @@ members = [
     "calculator",
     "upload_logs"
 ]
+
+[profile.release]
+lto = true # 优化等级
+panic = "abort" # panic 时的行为
+codegen-units = 1 # 编译单元数量
