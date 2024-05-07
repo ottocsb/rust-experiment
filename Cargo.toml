@@ -2,8 +2,10 @@
 members = [
     "text_retrieval",
     "calculator",
-    "upload_logs"
+    "upload_logs",
+    "guess_num"
 ]
+resolver = "2"
 
 [profile.release]
 lto = true # 优化等级

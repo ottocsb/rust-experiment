@@ -1,5 +1,5 @@
 // 实现一个冒泡排序
-pub fn bubble_sort(arr: &mut [i32]) {
+pub fn _bubble_sort(arr: &mut [i32]) {
     let len = arr.len();
     for i in 0..len {
         for j in 0..len - i - 1 {
@@ -12,7 +12,7 @@ pub fn bubble_sort(arr: &mut [i32]) {
 }
 
 // 实现一个快速排序
-pub fn quick_sort(arr: &mut [i32]) {
+pub fn _quick_sort(arr: &mut [i32]) {
     let len = arr.len();
     if len <= 1 {
         return;
@@ -31,6 +31,6 @@ pub fn quick_sort(arr: &mut [i32]) {
         arr[j] = arr[i];
     }
     arr[i] = pivot;
-    quick_sort(&mut arr[0..i]);
-    quick_sort(&mut arr[i + 1..len]);
+    _quick_sort(&mut arr[0..i]);
+    _quick_sort(&mut arr[i + 1..len]);
 }

@@ -1,11 +1,12 @@
-mod r#enum;
+mod game;
 mod sort;
 
 use rand::prelude::*;
-use std::{io, thread};
+// use std::{io, thread};
+use std::io;
 // use lazy_static::lazy_static;
-use r#enum::Game;
-use sort::{bubble_sort, quick_sort};
+use game::Game;
+// use sort::{bubble_sort, quick_sort};
 // use std::sync::Mutex;
 
 /// 创建随机数方法，接收一个可变引用参数，将参数变成随机数

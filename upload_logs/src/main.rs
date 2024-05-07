@@ -1,9 +1,8 @@
+use reqwest::blocking::Client;
 use std::fs;
 use std::path::Path;
 use std::thread;
 use std::time::Duration;
-use reqwest;
-use reqwest::blocking::Client;
 
 fn upload_logs(log_dir: &Path) {
     let files = fs::read_dir(log_dir).expect("无法读取日志目录");
@@ -17,7 +16,8 @@ fn upload_logs(log_dir: &Path) {
 
         let content = fs::read_to_string(&file_path).expect("无法读取文件");
         let client = Client::new();
-        let res = client.post("http://localhost:3000/upload")
+        let res = client
+            .post("http://localhost:3000/upload")
             .body(content)
             .send();
         match res {
@@ -30,7 +30,7 @@ fn upload_logs(log_dir: &Path) {
 fn main() {
     let log_dir = Path::new("C:\\logs");
     loop {
-        upload_logs(&log_dir);
+        upload_logs(log_dir);
         // thread::sleep(Duration::from_secs(24 * 60 * 60)); // 睡眠24小时
         thread::sleep(Duration::from_secs(10)); // 睡眠10秒
     }

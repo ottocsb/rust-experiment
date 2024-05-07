@@ -2,7 +2,7 @@
 name = "upload_logs"
 version = "0.1.0"
 edition = "2021"
-windows_subsystem = "windows"  # 子服务，无运行窗口
+#windows_subsystem = "windows"  # 子服务，无运行窗口 单独打包运行时可设置
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -10,10 +10,7 @@ windows_subsystem = "windows"  # 子服务，无运行窗口
 name = "upload_logs" # 二进制文件名
 path = "src/main.rs"  # 二进制文件路径
 
-[profile.release]
-lto = true # 优化等级
-panic = "abort" # panic 时的行为 
-codegen-units = 1 # 编译单元数量
+
 
 [dependencies]
 reqwest = { version = "0.12.3", features = ["blocking"] }
