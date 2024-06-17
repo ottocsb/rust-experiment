@@ -1,23 +1,22 @@
 use colored::*;
 use rand::prelude::*;
-use std::io;
+use std::{cmp::Ordering, io};
 
-// 创建一个枚举 游戏状态
+/// 创建一个枚举 游戏状态
 enum GameStatus {
     Run(String),
     Over(String),
 }
 
-// 创建一个结构体 游戏体
+/// 创建一个结构体 游戏体
 pub struct Game {
     guess_num: i32,
     rand_num: i32,
     count: i32,
 }
 
-// 实现结构体方法
 impl Game {
-    // 初始化实例方法
+    /// 初始化实例方法
     pub fn new() -> Game {
         Game {
             guess_num: 0,
@@ -26,7 +25,7 @@ impl Game {
         }
     }
 
-    // 执行方法
+    /// 执行方法
     pub fn run(&mut self) {
         println!(
             "{}",
@@ -59,20 +58,18 @@ impl Game {
         }
     }
 
-    // 逻辑判断
+    /// 逻辑判断 使用 `cmp` 方法对比两个数字 返回一个枚举 `Ordering`
+    /// 有三个值 `Less Greater Equal` 分别表示小于 大于 等于 三种情况
+    /// `match` 根据返回值进行不同的操作
     fn once(&mut self) -> GameStatus {
-        if self.guess_num == self.rand_num {
-            GameStatus::Over(String::from("你猜对了! "))
-        } else {
-            if self.guess_num > self.rand_num {
-                GameStatus::Run(String::from("太大了!\n"))
-            } else {
-                GameStatus::Run(String::from("太小了!\n"))
-            }
+        match self.guess_num.cmp(&self.rand_num) {
+            Ordering::Less => GameStatus::Run(String::from("太小了!\n")),
+            Ordering::Greater => GameStatus::Run(String::from("太大了!\n")),
+            Ordering::Equal => GameStatus::Over(String::from("你猜对了! ")),
         }
     }
 
-    // 输入方法
+    /// 输入方法
     fn input_num(&mut self) {
         let mut input = String::new();
         io::stdin()
